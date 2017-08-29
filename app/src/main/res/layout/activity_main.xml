@@ -7,6 +7,7 @@
     tools:context="io.jiayou.hanzi.MainActivity">
 
     <TextView
+        android:id="@+id/texthanzi"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:elevation="1dp"
@@ -17,8 +18,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502"
-        tools:layout_editor_absoluteX="-26dp"
-        tools:layout_editor_absoluteY="-35dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
