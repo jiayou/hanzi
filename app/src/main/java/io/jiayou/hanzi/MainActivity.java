@@ -107,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
         do {
             currIndex++;
             if (currIndex >= hanzi_list.length) {
-                currIndex = 0;
+                currIndex = hanzi_list.length-1;       // 0;
+                break;
             }
         }
         while (score_list[currIndex] >= 5 && skipEnable);
@@ -124,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
         do {
             currIndex--;
             if (currIndex <= 0) {
-                currIndex = hanzi_list.length - 1;
+                currIndex = 0;  // hanzi_list.length - 1;
+                break;
             }
         }
         while (score_list[currIndex] >= 5 && skipEnable);
