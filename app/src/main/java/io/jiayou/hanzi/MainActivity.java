@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Read HanZi List
         hanzi_list = getResources().getStringArray(R.array.hanzi_list);
 
-        // find first unknown character
-
+        // Read Score List
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         score_list = new int[hanzi_list.length];
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             score_list[i] = sharedPref.getInt(x, 0);
         }
 
+        // Update Display
         textDisplay = (TextView) findViewById(R.id.texthanzi);
         textDisplay.setText(hanzi_list[currIndex]);
 
@@ -54,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         scoreBar.setRating(score_list[currIndex]);
+
+        updateTitleText();
+    }
+
+    private void updateTitleText() {
+        if (skipEnable) {
+            setTitle(R.string.app_name_skipped);
+        }
+        else{
+            setTitle(R.string.app_name_no_skip);
+        }
     }
 
     @Override
@@ -103,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void goNextChar() {
-
         do {
             currIndex++;
             if (currIndex >= hanzi_list.length) {
@@ -113,13 +124,9 @@ public class MainActivity extends AppCompatActivity {
         }
         while (score_list[currIndex] >= 5 && skipEnable);
 
-        // TODO: if all characters are skipped, the endless loop must be terminated.
-
         textDisplay.setText(hanzi_list[currIndex]);
         scoreBar.setRating(score_list[currIndex]);
     }
-
-
     void goPrevChar() {
 
         do {
@@ -130,8 +137,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         while (score_list[currIndex] >= 5 && skipEnable);
-
-        // TODO: if all characters are skipped, the endless loop must be terminated.
 
         textDisplay.setText(hanzi_list[currIndex]);
         scoreBar.setRating(score_list[currIndex]);

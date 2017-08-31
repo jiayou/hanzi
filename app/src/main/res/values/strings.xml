@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">常用汉字</string>
+    <string name="app_name_skipped">常用汉字（生字）</string>
+    <string name="app_name_no_skip">常用汉字（全部）</string>
 
 
 </resources>
